@@ -17,7 +17,7 @@ use App\Http\Controllers\Frontend\UserDashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// AUTHENTICATION 
 
 
 Route::middleware('auth')->group(function () {
