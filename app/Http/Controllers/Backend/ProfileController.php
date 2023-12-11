@@ -13,18 +13,5 @@ class ProfileController extends Controller
     {
         return view('admin.profile.index');
     }
-    public function updateProfile(Request $request)
-    {
-        $request->validate([
-            'address' => ['required', 'max:100'],
-            'phone' => ['required', 'max:10']
-        ]);
-
-        $user = Auth::user();
-        $user->address = $request->address;
-        $user->phone = $request->phone;
-        $user->save();
-        return redirect()->back();
-
-    }
+    
 }

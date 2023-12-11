@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Sau khi khách hàng đăng nhập
 Route::group(['middleware' => ['auth', 'verified']], function(){ 
     Route::get('customer/dashboard', [UserDashboardController::class, 'index'])->name('customer.dashboard');
+    Route::get('customer/profile', [UserProfileController::class, 'index'])->name('customer.profile');
+    Route::put('customer/profile', [UserProfileController::class, 'updateProfile' ])->name('customer.profile.update');
+    Route::post('customer/profile', [UserProfileController::class, 'updatePassword' ])->name('customer.profile.update.password');
+
 });
 
 // admin đăng nhập tại route
