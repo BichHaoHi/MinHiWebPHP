@@ -8,11 +8,13 @@
             </div>
             <div class="col-xl-2 col-7 col-md-8 col-lg-2">
                 <div class="wsus_logo_area">
-                    <a class="wsus__header_logo" href="index.html">
-                        <img src="{{ asset('frontend/images/logo_2.png') }}" alt="logo" class="img-fluid w-100">
-                    </a>
+                    {{-- <a class="wsus__header_logo">
+                        <img src="{{ asset('/images/logo.png') }}" alt="logo" >
+                    </a> --}}
                 </div>
             </div>
+
+
             <div class="col-xl-5 col-md-6 col-lg-4 d-none d-lg-block">
                 <div class="wsus__search">
                     <form>
@@ -27,10 +29,7 @@
                         <div class="wsus__call">
                             <i class="fas fa-user-headset"></i>
                         </div>
-                        <div class="wsus__call_text">
-                            <p>example@gmail.com</p>
-                            <p>+569875544220</p>
-                        </div>
+                    
                     </div>
                     <ul class="wsus__icon_area">
                         <li><a href="wishlist.html"><i class="fal fa-heart"></i><span>05</span></a></li>

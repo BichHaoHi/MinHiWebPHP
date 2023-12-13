@@ -7,6 +7,9 @@ use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\DetailProductController;
+use App\Http\Controllers\Frontend\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +52,8 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 // admin đăng nhập tại route
 Route::get('admin/login', [AdminController::class , 'login'])->name('admin.login');
 
+// Cus xem ds các sản phẩm 
+Route::get('/products', [ProductController::class,'show_list'])->name('products_gridview');
+
+// Customer xem chi tiết sản phẩm 
+Route::get('/products/{id}', [DetailProductController::class, 'index'])->name('detail_product');
