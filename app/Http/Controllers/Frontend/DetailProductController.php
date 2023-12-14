@@ -23,15 +23,10 @@ class DetailProductController extends Controller
         // ...
     }
 
-    public function show(String $id)
+    public function show($id)
     {
         $product = Product::find($id);
-
-        if (!$product) {
-            abort(404); // Hoặc thực hiện xử lý lỗi khác nếu cần
-        }
-    
-        return view('customer.shop_product.detail-product');
+        return view('customer.shop_product.detail-product',['product' => $product] ); //compact('product'):  compact để tạo key = ' product' tương ứng với value $product
     }
 
     public function edit($id)

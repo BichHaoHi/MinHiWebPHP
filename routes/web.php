@@ -56,4 +56,4 @@ Route::get('admin/login', [AdminController::class , 'login'])->name('admin.login
 Route::get('/products', [ProductController::class,'show_list'])->name('products_gridview');
 
 // Customer xem chi tiết sản phẩm 
-Route::get('/products/{id}', [DetailProductController::class, 'index'])->name('detail_product');
+Route::get('/products/{id}', [DetailProductController::class, 'show'])->name('show_detail_product');

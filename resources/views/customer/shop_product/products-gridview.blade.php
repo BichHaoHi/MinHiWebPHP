@@ -433,7 +433,7 @@
                                         <div class="wsus__product_item">
                                             <span class="wsus__new">New</span>
                                             <span class="wsus__minus">-20%</span>
-                                            <a class="wsus__pro_link" href="{{ route('detail_product', ['id' => $product->id]) }}">
+                                            <a class="wsus__pro_link" href="{{ route('show_detail_product', ['id' => $product->id]) }}">
                                                 <img src="{{ asset('images/product/' . $product->link_photo) }}" alt="{{ $product->name }}"
                                                 class="img-fluid w-100 img_1" />
                                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYvSYpbPGhnp3aW8-vuS4ykXbbYPFmvlOBdA&usqp=CAU" alt="product"
@@ -443,7 +443,7 @@
                                             
                                             <div class="wsus__product_details">
                                                
-                                                <p class="wsus__pro_rating">
+                                                <p class="wsus__pro_rating"> 
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>

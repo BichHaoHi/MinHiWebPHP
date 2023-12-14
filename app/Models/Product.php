@@ -21,6 +21,9 @@ class Product extends Model
         'price',
         'price_todel',
         'link_photo',
+        'photo1',
+        'photo2',
+        'photo3',
     ];
 
     protected $casts = [

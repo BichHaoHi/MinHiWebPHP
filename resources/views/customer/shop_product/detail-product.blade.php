@@ -226,12 +226,12 @@
                                 <div class="exzoom_img_box">
                                 
                                     <ul class='exzoom_img_ul'>
-                                        <li><img class="zoom ing-fluid w-100" src="https://bizweb.dktcdn.net/thumb/1024x1024/100/431/784/products/7-cacac425-f0ad-4c49-99d5-5dd3df407c1d.png?v=1695623116437" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="https://bizweb.dktcdn.net/100/345/186/files/sua-rua-mat-simple-00.jpg?v=1621222361182" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="https://media.loveitopcdn.com/37825/thumb/sg-11134201-22110-yad07du078jv80.jpg" alt="product"></li>
-                                        <li><img class="zoom ing-fluid w-100" src="https://product.hstatic.net/200000617989/product/333210724_5368103309957514_7324077696645591386_n_ce1d884e3c32459da64416067ab13d95.png" alt="product"></li>
-                                        
+                                        <li><img class="zoom ing-fluid w-100" src="{{ asset('images/product/' . $product->link_photo) }}" alt="product"></li>
+                                        {{-- <li><img class="zoom ing-fluid w-100" src="{{ asset('images/product/' . $product->photo1) }}" alt="product"></li>
+                                        <li><img class="zoom ing-fluid w-100" src="{{ asset('images/product/' . $product->photo2) }}" alt="product"></li>
+                                        <li><img class="zoom ing-fluid w-100" src=" " alt="product"></li> --}}
                                     </ul>
+                                    
                                 </div>
                                 
                             </div>
@@ -239,9 +239,9 @@
                     </div>
                     <div class="col-xl-5 col-md-7 col-lg-7">
                         <div class="wsus__pro_details_text">
-                            <a class="title" href="#">Sửa rửa mặt Simple</a>
-                            <p class="wsus__stock_area"><span class="in_stock">Số lượng còn: </span> (167 item)</p>
-                            <h4>$50.00 <del>$60.00</del></h4>
+                            <h1 class="title">{{ $product->name }}</h1>
+                            <h3 class="wsus__stock_area"><span class="in_stock">Số lượng còn: </span> {{ $product->quantity }}</h3>
+                            <h4>{{ $product->price }} VNĐ <del>{{ $product->price_todel }} VNĐ</del></h4>
                             <p class="review">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -250,14 +250,41 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>20 review</span>
                             </p>
-                            
+                               
+                            <div class="wsus__selectbox">
+                                <div class="row">
+                                    <div class="col-xl-6 col-sm-6">
+                                        <h5 class="mb-2">Loại da của bạn:</h5>
+                                        <select class="select_2" name="state">
+                                            <option>Da hỗn hợp</option>
+                                            <option>Da khô</option>
+                                            <option>Da dầu</option>
+                                            <option>Da thiên khô</option>
+                                            <option>Da thiên dầu</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-6 col-sm-6">
+                                        <h5 class="mb-2">Loại sản phẩm:</h5>
+                                        <select class="select_2" name="state">
+                                            <option>50ml - 100ml</option>
+                                            <option>150ml</option>
+                                            <option>200ml</option>
+                                            <option>400ml</option>
+                                            <option>500ml</option>
+                                            
+                                        </select>
+                                    </div>
+
+                                    
+                                </div>
+                            </div>
+                            </div>
                             
                             <div class="wsus__quentity">
                                 <h5>Số lượng đặt :</h5>
                                 <form class="select_number">
                                     <input class="number_area" type="text" min="1" max="100" value="1" />
                                 </form>
-                            
                             </div>
                             
                             <ul class="wsus__button_area">
@@ -307,12 +334,10 @@
                                     <div class="row">
                                         <div class="col-xl-12">
                                             <div class="wsus__description_area">
-                                                <h4>Da nhạy cảm</h4>
-                                                <p>Chuyên dùng cho các loại da sau phục hồi hư tổn hoặc đăng trong giai đoạn có nhiều tổn thương</p>
-                                                <h4>Da tuổi dậy thì</h4>
-                                                <p>Với những bé gái mới bước vào chu trình Skincare ở tuổi dậy thì nên chọn các sản phẩm lành tính để làm sạch nhẹ và an toàn</p>
-                                                <h4>Da lành tính</h4>
-                                                <p>Phù hợp với các loại da ít gặp các vấn đề như mụn, dầu nhờn, ... </p>
+
+                                                <h4>DÀNH CHO CÁC LOẠI DA: {{ $product->skin_type }}</h4>
+                                                <p>ĐẶC TRỊ CÁC VẤN ĐỀ DA: {{ $product->skin_problem }}</p>
+                                            
                                         
                                             </div>
                                         </div>
@@ -325,16 +350,26 @@
                                         <div class="col-xl-6 col-lg-6 mb-4 mb-lg-0">
                                             <div class="wsus__pro_det_info">
                                                 <h4>Mô tả sản phẩm</h4>
-                                                <p><span>Fabric</span> 100% Cotton</p>
-                                                <p><span>Materials</span> Yearn</p>
+                                                <p><span>Thương hiệu: </span> {{ $product->provider }}</p>
+                                                <p><span>Xuất xứ thương hiệu: </span> NGHĨ LÀ NÊN THÊM BẢNG NCC ĐỂ HIỂN THỊ</p>
+                                                <p><span>Thành phần: </span> THÊM THÔNG TIN THÀNH PHẦN VÀO MÔ TẢ: {{ $product->description }}</p>
+
+                                                <p>
+                                                    <span>Giới tính: </span>
+                                                    @if($product->sex == 'Male')
+                                                        Nam
+                                                    @elseif($product->sex == 'Female')
+                                                        Nam và Nữ
+                                                    @endif
+                                                </p>
                                                
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6">
                                             <div class="wsus__pro_det_info">
                                                 <h4>Thông tin nhà cung cấp</h4>
-                                                <p><span>Fabric</span> 100% Cotton</p>
-                                                <p><span>Materials</span> Yearn</p>
+                                                <p><span>Tên NCC: </span> {{ $product->provider }} </p>
+                                                <p><span>Mô tả: </span> Thêm thuộc tính để mô tả được tt NCC</p>
                                                
                                             </div>
                                         </div>
