@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\ManageCusController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -33,5 +34,8 @@ Route::resource('admin/slider', SliderController::class);
 // MANAGE PRODUCTS
 Route::resource('admin/manage_product', ProductController::class);  
 
+// MANAGER LIST CUSTOMER - SEE DETAIL A CUS - TÌM KIẾM KHÁCH HÀNG
+//Route::get('/admin/manage_cutomer', [ManageCusController::class,'index'])->name('manageCus_show');// Đổ dữ liệu từ data lên bằng Ajax
+Route::resource('admin/manage_customer', ManageCusController::class);// gọi đến View chứa DataTable --> gọi đến hàm index
 
 ?>

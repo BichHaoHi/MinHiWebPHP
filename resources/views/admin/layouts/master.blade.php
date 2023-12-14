@@ -22,6 +22,11 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href=" {{ asset('backend/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  {{-- LINK để sử dụng DATATABLE :  --}}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.2.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>

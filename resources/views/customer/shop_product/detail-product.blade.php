@@ -230,6 +230,9 @@
                                         {{-- <li><img class="zoom ing-fluid w-100" src="{{ asset('images/product/' . $product->photo1) }}" alt="product"></li>
                                         <li><img class="zoom ing-fluid w-100" src="{{ asset('images/product/' . $product->photo2) }}" alt="product"></li>
                                         <li><img class="zoom ing-fluid w-100" src=" " alt="product"></li> --}}
+
+
+                                        
                                     </ul>
                                     
                                 </div>
