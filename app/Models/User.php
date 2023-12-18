@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    use HasFactory;
+    protected $table = 'users';
+
+    // Đặt tên cột khóa chính trong bảng 'khach_hang' (thường là 'id')
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +26,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'postcode',
+        'birthday',
+        'total',
+        'enable',
+        'password'
     ];
 
     /**

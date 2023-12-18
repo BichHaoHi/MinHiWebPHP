@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('don_hang', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->date('date');
+            $table->string('address');
+            $table->string('phone');
+            $table->string('status');
+            $table->boolean('enable');
+            $table->double('total');
+
+            // Khóa ngoại đến bảng User
+        $table->unsignedBigInteger('idUser'); // Phải là kiểu unsignedBigInteger để trùng với kiểu id trong bảng User
+        $table->foreign('idUser')->references('id')->on('users'); // Thay 'users' bằng tên thực của bảng User
         });
     }
 

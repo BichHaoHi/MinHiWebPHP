@@ -11,18 +11,17 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use App\Models\User;
+use App\Models\DonHang;
 
 
-class CustomerDataTable extends DataTable
+class OrderDataTable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('id', function () {
+        ->addColumn('id', function ($model) {
             // Thêm nội dung tính toán cho cột STT
-            static $counter = 0;
-            return ++$counter;
+            return $model->id;
         })
             ->addColumn('action', function($query){
             })
@@ -41,7 +40,7 @@ class CustomerDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(User $model): QueryBuilder
+    public function query(DonHang $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -75,15 +74,14 @@ class CustomerDataTable extends DataTable
     {
         return [
            
-            Column::make('id')->title('STT'), // đúng với tên trường cơ sở dữ liệu, là các trường cần lấy dữ liệu ra
+            Column::make('id')->title('ID Đơn hàng'), // đúng với tên trường cơ sở dữ liệu, là các trường cần lấy dữ liệu ra
             Column::make('name')->title('Tên KH'),
-            Column::make('address')->title('Địa chỉ'),
             Column::make('phone')->title('SĐT'),
-            Column::make('postcode')->title('Mã bưu chính'),
-            Column::make('email')->title('Email'),
-            Column::make('birthday')->title('Ngày sinh'),
-            Column::make('total')->title('Tổng đơn'),
-            Column::make('role')->title('Quyền')
+            Column::make('date')->title('Ngày hóa đơn'),
+            Column::make('status')->title('Trạng thái đơn hàng'),
+            Column::make('total')->title('Tổng tiền hóa đơn'),
+            Column::make('enable')->title('Hoạt động') // view or xóa
+            
             
             ->exportable(false)
             ->printable(false)
@@ -97,7 +95,7 @@ class CustomerDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Users_' . date('YmdHis');
+        return 'ListOrder_' . date('YmdHis');
     }
 }
 

@@ -22,6 +22,7 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-store"></i> <span>Manage Products</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{route('manage_product.index') }}">List Product</a></li>
+            <li><a class="nav-link" href="#">List Feedback</a></li>
           </ul>
         </li>
 
@@ -30,8 +31,8 @@
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-address-book"></i> <span>Manage Customer</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{route('manage_customer.index') }}">List Customer</a></li>
-            <li><a class="nav-link" href="#">List Feedback</a></li>
+            <li><a class="nav-link" href="{{route('list_order') }}">List Customer</a></li>
+            
 
           </ul>
         </li>
@@ -39,8 +40,8 @@
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-truck"></i> <span>Manage Order</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="#">List Order Waiting</a></li>
-            <li><a class="nav-link" href="#">List Done Delivery</a></li>
+            <li><a class="nav-link" href="{{route('manage_order.index') }}">List Order</a></li>
+          
           </ul>
         </li>
         {{-- <li class="dropdown">

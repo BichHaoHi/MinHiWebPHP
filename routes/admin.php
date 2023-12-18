@@ -6,6 +6,9 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\ManageCusController;
+use App\Http\Controllers\Backend\AdminOrderController;
+
+use App\Http\Controllers\Backend\AdminOrderControllerController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -37,5 +40,11 @@ Route::resource('admin/manage_product', ProductController::class);
 // MANAGER LIST CUSTOMER - SEE DETAIL A CUS - TÌM KIẾM KHÁCH HÀNG
 //Route::get('/admin/manage_cutomer', [ManageCusController::class,'index'])->name('manageCus_show');// Đổ dữ liệu từ data lên bằng Ajax
 Route::resource('admin/manage_customer', ManageCusController::class);// gọi đến View chứa DataTable --> gọi đến hàm index
+
+
+//Route danh sách các đơn đặt từ KH
+Route::get('/admin/list_odrer', [AdminOrderController::class, 'index'])->name('list_order');
+// Route chi tiết đơn
+//Route::get('/admin/manage_order_detail', [AdminOrderController::class, 'index'])->name('admin_order_detail');
 
 ?>

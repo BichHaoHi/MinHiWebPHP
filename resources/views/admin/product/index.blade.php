@@ -4,7 +4,7 @@
       <div class="section-header">
         <h1>LIST PRODUCT</h1>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div>
+          {{-- <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div> --}}
           <div class="breadcrumb-item"><a href="#">Manage Product</a></div>
           <div class="breadcrumb-item"><a href="#">List Product</a></div>
         </div>

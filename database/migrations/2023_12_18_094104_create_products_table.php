@@ -22,10 +22,9 @@ return new class extends Migration
             $table->text('description');
             $table->double('quantity');
             $table->double('price');
+            $table->double('price_todel');
             $table->text('link_photo');
-            $table->text('photo1');
-            $table->text('photo2');
-            $table->text('photo3');
+        
             $table->timestamps();
         });
     }
