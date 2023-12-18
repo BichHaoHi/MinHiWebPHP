@@ -30,8 +30,7 @@ Route::post('admin/profile/update', [ProfileController::class, 'updateProfile'])
 // Slider Route
 Route::resource('admin/slider', SliderController::class);
 
+
 // MANAGE PRODUCTS
-Route::resource('admin/manage_product', ProductController::class);  
-
-
+Route::resource('admin/manage_product', ProductController::class);
 ?>

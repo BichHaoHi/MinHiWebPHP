@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('provider');
+            $table->boolean('enable');
             $table->string('sex');
             $table->string('skin_problem');
             $table->string('skin_type');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->double('quantity');
             $table->double('price');
             $table->timestamps();
+            $table->string('link_photo');
         });
     }
 

@@ -4,20 +4,20 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="wsus__monthly_top_banner">
                     <div class="wsus__monthly_top_banner_img">
-                        <img src="images/monthly_top_img3.jpg" alt="img" class="img-fluid w-100">
+                        <img src="{{ asset('uploads/flash_sale.jpg') }}">
                         <span></span>
                     </div>
                     <div class="wsus__monthly_top_banner_text">
                         <h4>Black Friday Sale</h4>
                         <h3>Up To <span>70% Off</span></h3>
                         <H6>Everything</H6>
-                        <a class="shop_btn" href="#">shop now</a>
+                        {{-- <a class="shop_btn" href="#">shop now</a> --}}
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-12">
+            {{-- <div class="col-xl-12">
                 <div class="wsus__section_header for_md">
                     <h3>Top Categories Of The Month</h3>
                     <div class="monthly_top_filter">
@@ -29,7 +29,7 @@
                         <button data-filter=".wat">Watches</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row">
             <div class="col-xl-12 col-lg-12">

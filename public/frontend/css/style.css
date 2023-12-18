@@ -3990,7 +3990,7 @@ PRODUCT DETAILS START
   border: none;
   border-radius: 3px;
   color: #333;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: capitalize;
   background: #fff;
@@ -9450,3 +9450,12 @@ a:not([href]):not([class]):hover {
 }
 
 /* extra css end here */
+
+.product_qty_wrapper{
+  display:flex;
+}
+.producy-qty{
+  width: 43px;
+  height: 36px;
+  padding-left: 5px;
+}

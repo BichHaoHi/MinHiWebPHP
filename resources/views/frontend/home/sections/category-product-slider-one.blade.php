@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="wsus__section_header">
-                    <h3>Consumer Electronics</h3>
+                    <h3>Nước tẩy trang</h3>
                     <a class="see_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
                 </div>
             </div>
@@ -38,6 +38,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-sm-6 col-lg-4">
                 <div class="wsus__product_item">
                     <span class="wsus__minus">-20%</span>

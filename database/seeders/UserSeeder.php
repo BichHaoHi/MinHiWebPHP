@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'phone'=>'0865217637',
             'postcode'=>'064303002139',
             'email'=>'csk@gmail.com',
-            'birthday'=>'2003/11/09',
+            'birthday'=>'2003/10/09',
             'total'=>0,
             'enable'=>true,
             'password'=>bcrypt('csk@123'),
@@ -38,7 +38,6 @@ class UserSeeder extends Seeder
             'enable'=>true,
             'password'=>bcrypt('ltaq@123'),
             'role'=>'customer'
-
         ]
         ]);
     }

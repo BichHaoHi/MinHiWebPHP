@@ -28,14 +28,24 @@ class ProductDataTable extends DataTable
 
                 return $editBtn.$deleteBtn;
             })
-            ->addColumn('enable', function($query){
-                $button = '<label class="custom-switch">
-                <input type="radio" name="option" value="1" class="custom-switch-input" checked>
-                <span class="custom-switch-indicator"></span>
-              </label>';
-              return $button;
+            
+            // ->addColumn('enable', function($query){
+            //     if($query->enable == 1){
+            //         $button = '<label class="custom-switch">
+            //         <input type="radio" name="option" value="1" class="custom-switch-input change-status" data-id="'.$query->id.'" checked>
+            //         <span class="custom-switch-indicator"></span>
+            //       </label>';
+            //     }else
+            //     {
+            //         $button = '<label class="custom-switch">
+            //         <input type="radio" name="option" value="1" class="custom-switch-input change-status" data-id="'.$query->id.'"" >
+            //         <span class="custom-switch-indicator"></span>
+            //       </label>';
+            //     }
+               
+            //   return $button;
 
-            })
+            // })
             ->rawColumns(['icon', 'action', 'enable'])
             ->setRowId('id');
     }

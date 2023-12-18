@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Brian2694\Toastr\Facades\Toastr;
+use File;
 
 class ProductController extends Controller
 {
@@ -31,9 +32,12 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+
     public function store(Request $request)
     {
         //
+        $product = new Product();
         $request->validate([
             'price'=>['required'],
             'quantity'=>['required', 'max:200'],
@@ -44,9 +48,16 @@ class ProductController extends Controller
             'enable'=>['required'],
             'provider'=>['required'],
             'type'=>['required'],
-            'name'=>['required','unique:products,name']
+            'name'=>['required','unique:products,name'],
+            'link_photo'=>['required']
         ]);
-        $product = new Product();
+        
+    if ($request->hasFile('link_photo')) {
+        $image = $request->file('link_photo');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('uploads'), $imageName);
+        $product->link_photo = '/uploads/' . $imageName;
+    }
         $product->name = $request->name;
         $product->type = $request->type;
         $product->provider = $request->provider;
@@ -94,6 +105,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->quantity = $request->quantity;
         $product->price = $request->price;
+        $product->enable = $request->price;
         $product->save();
         
         toastr('Update Successfully', 'success');
@@ -107,17 +119,24 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
-        // $product = Product::findOrFail($id);
-        // $product->delete();
-        // return response(['status' => 'success', 'Deleted Successfully']);
-        try {
-            $product = Product::findOrFail($id);
-            $product->delete();
-    
-            return response()->json(['status' => 'success', 'message' => 'Deleted Successfully']);
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        $product = Product::findOrFail($id);
+        if (!empty($product->link_photo)) {
+            $imagePath = public_path($product->link_photo);
+            
+             if (file_exists($imagePath)) {
+                unlink($imagePath); // Delete the file
+            }
         }
+        $product->delete();
+        return response(['status' => 'success', 'Deleted Successfully']);
+        // try {
+        //     $product = Product::findOrFail($id);
+        //     $product->delete();
+        //     return response()->json(['status' => 'success', 'message' => 'Deleted Successfully']);
+        // } catch (\Exception $e) {
+        //     return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        // }
     
     }
+   
 }

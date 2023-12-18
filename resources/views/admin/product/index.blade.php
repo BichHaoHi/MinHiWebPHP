@@ -11,8 +11,6 @@
       </div>
 
       <div class="section-body">
-       
-
         <div class="row">
           <div class="col-12 ">
             <div class="card">
@@ -24,7 +22,7 @@
               </div>
               <div class="card-body">
                 {{-- sử dụng DataTables để render bảng dữ liệu --}}
-                {{ $dataTable->table() }}
+                {{$dataTable->table()}}
               </div>
               
             </div>
@@ -39,3 +37,4 @@
 @push('scripts')
 {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush
+

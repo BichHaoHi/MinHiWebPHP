@@ -104,7 +104,7 @@
       $('body').on('click', '.delete-item', function(event){
         event.preventDefault();
         let deleteUrl = $(this).attr('href');
-                Swal.fire({
+        Swal.fire({
           title: "Are you sure?",
           icon: "warning",
           showCancelButton: true,
@@ -117,17 +117,20 @@
               type: 'DELETE',
               url: deleteUrl,
               success: function(data){
-                console.log(data);
+                if (data.status == 'success') {
+                        Swal.fire('Deleted!',data.message,'success')
+                        window.location.reload();
+                    } else if(data.status == 'error')
+                    {
+                      Swal.fire('Cant delete', data.message, 'success')
+                    }
+                
+              },
+              error: function(xhr, status,error){
+                console.log(error);
               }
-              // error: function(xhr, status,error){
-              //   console.log(error);
-              // }
             })
-            Swal.fire({
-              title: "Deleted!",
-
-              icon: "success"
-            });
+         
   }
 });
       })

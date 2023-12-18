@@ -1,4 +1,7 @@
 @extends('frontend.layouts.master')
+@section('title')
+    MinHi_Cosmetic
+@endsection
 @section('content')
         <!--==========================
       PRODUCT MODAL VIEW START
@@ -152,7 +155,7 @@
     <!--============================
         FLASH SELL START
     ==============================-->
-    @include('frontend.home.sections.flash-sale')
+    {{-- @include('frontend.home.sections.flash-sale') --}}
     <!--============================
         FLASH SELL END
     ==============================-->
@@ -161,7 +164,7 @@
     <!--============================
        MONTHLY TOP PRODUCT START
     ==============================-->
-    @include('frontend.home.sections.top-category-product')
+    {{-- @include('frontend.home.sections.top-category-product') --}}
     <!--============================
        MONTHLY TOP PRODUCT END
     ==============================-->
@@ -170,7 +173,7 @@
     <!--============================
         BRAND SLIDER START
     ==============================-->
-    @include('frontend.home.sections.brand-slider')
+    {{-- @include('frontend.home.sections.brand-slider') --}}
     <!--============================
         BRAND SLIDER END
     ==============================-->
@@ -179,7 +182,7 @@
     <!--============================
         SINGLE BANNER START
     ==============================-->
-    @include('frontend.home.sections.single-banner')
+    {{-- @include('frontend.home.sections.single-banner') --}}
     <!--============================
         SINGLE BANNER END  
     ==============================-->
@@ -188,7 +191,7 @@
     <!--============================
         HOT DEALS START
     ==============================-->
-    @include('frontend.home.sections.hot-deals')
+    {{-- @include('frontend.home.sections.hot-deals') --}}
     <!--============================
         HOT DEALS END  
     ==============================-->
@@ -197,7 +200,7 @@
     <!--============================
         ELECTRONIC PART START  
     ==============================-->
-    @include('frontend.home.sections.category-product-slider-one')
+    {{-- @include('frontend.home.sections.category-product-slider-one') --}}
     <!--============================
         ELECTRONIC PART END  
     ==============================-->
@@ -206,7 +209,7 @@
     <!--============================
         ELECTRONIC PART START  
     ==============================-->
-    <section id="wsus__electronic2">
+    {{-- <section id="wsus__electronic2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -366,7 +369,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--============================
         ELECTRONIC PART END  
     ==============================-->
@@ -375,7 +378,7 @@
     <!--============================
         LARGE BANNER  START  
     ==============================-->
-    <section id="wsus__large_banner">
+    {{-- <section id="wsus__large_banner">
         <div class="container">
             <div class="row">
                 <div class="cl-xl-12">
@@ -405,7 +408,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--============================
         LARGE BANNER  END  
     ==============================-->
@@ -414,7 +417,7 @@
     <!--============================
         WEEKLY BEST ITEM START  
     ==============================-->
-    <section id="wsus__weekly_best" class="home2_wsus__weekly_best_2 ">
+    {{-- <section id="wsus__weekly_best" class="home2_wsus__weekly_best_2 ">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-sm-6">
@@ -649,7 +652,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--============================
         WEEKLY BEST ITEM END 
     ==============================-->
@@ -658,7 +661,7 @@
     <!--============================
       HOME SERVICES START
     ==============================-->
-    <section id="wsus__home_services" class="home_service_2">
+    {{-- <section id="wsus__home_services" class="home_service_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-sm-6 col-lg-3 pe-lg-0">
@@ -691,7 +694,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--============================
         HOME SERVICES END
     ==============================-->
@@ -700,7 +703,7 @@
     <!--============================
         HOME BLOGS START
     ==============================-->
-    <section id="wsus__blogs" class="home_blogs">
+    {{-- <section id="wsus__blogs" class="home_blogs">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -783,7 +786,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--============================
         HOME BLOGS END
     ==============================-->

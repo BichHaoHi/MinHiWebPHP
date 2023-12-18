@@ -4,9 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +51,18 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 
 // admin đăng nhập tại route
 Route::get('admin/login', [AdminController::class , 'login'])->name('admin.login');
+
+// Product detail route
+Route::get('product-detail/{name}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
+
+// Route thêm sp vào giỏ hàng
+    Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+    Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
+    Route::post('cart/update-quantity', [CartController::class, 'updateProductQty'])->name('cart.update-quantity');
+    Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear.cart');
+    Route::get('cart/remove-product/{rowId}', [CartController::class, 'removeProduct'])->name('cart.remove-product');
+    Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
+
+    Route::get('cart/total', [CartController::class, 'cartTotal'])->name('cart.total');
+    
 

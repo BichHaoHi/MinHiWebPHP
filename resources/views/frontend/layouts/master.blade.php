@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <title>Sazao || e-Commerce HTML Template</title>
+    <title>
+        @yield('title')
+    </title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -25,6 +29,8 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
 </head>
 
@@ -92,7 +98,7 @@
     <!--============================
         FOOTER PART START
     ==============================-->
-    @include('frontend.layouts.footer')
+    {{-- @include('frontend.layouts.footer') --}}
     <!--============================
         FOOTER PART END
     ==============================-->
@@ -141,11 +147,30 @@
     <script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
     <!--venobox js-->
     <script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
+
+    <script src=" //cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+    
+{{-- ARE YOU SURE --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!--classycountdown js-->
     <script src="{{ asset('frontend/js/jquery.classycountdown.js') }}"></script>
 
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    
+    <script>
+        @if($errors->any())
+            @foreach ($errors->all() as $error )
+                toastr.console.error("{{ $error }}");
+                
+            @endforeach
+        @endif
+    </script>
+
+    @stack('scripts')
 </body>
 
 </html>
