@@ -319,11 +319,7 @@
                                         aria-controls="pills-profile" aria-selected="false">Thông tin sản phẩm</button> 
                                         {{-- chứa mô tả, loại sản phẩm  --}}
                                 </li>
-                                {{-- <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-contact" type="button" role="tab"
-                                        aria-controls="pills-contact" aria-selected="false">Vendor Info</button>
-                                </li> --}}
+                                
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-contact-tab2" data-bs-toggle="pill"
                                         data-bs-target="#pills-contact2" type="button" role="tab"
@@ -378,66 +374,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-                                    <div class="wsus__pro_det_vendor">
-                                        <div class="row">
-                                            <div class="col-xl-6 col-xxl-5 col-md-6">
-                                                <div class="wsus__vebdor_img">
-                                                    <img src="images/slider_1.jpg" alt="vensor" class="img-fluid w-100">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-xxl-7 col-md-6 mt-4 mt-md-0">
-                                                <div class="wsus__pro_det_vendor_text">
-                                                    <h4>jhon deo</h4>
-                                                    <p class="rating">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <span>(41 review)</span>
-                                                    </p>
-                                                    <p><span>Store Name:</span> OAIO Store</p>
-                                                    <p><span>Address:</span> Steven Street, El Carjon, CA 92020, United
-                                                        States (US)</p>
-                                                    <p><span>Phone:</span> 1234567890</p>
-                                                    <p><span>mail:</span> example@gmail.com</p>
-                                                    <a href="vendor_details.html" class="see_btn">visit store</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="wsus__vendor_details">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Venenatis tellus in metus vulputate eu scelerisque felis. Vel
-                                                        pretium lectus quam id leo in vitae turpis massa. Nunc id cursus
-                                                        metus aliquam. Libero id faucibus nisl tincidunt eget. Aliquam
-                                                        id
-                                                        diam maecenas ultricies mi eget mauris. Volutpat ac tincidunt
-                                                        vitae
-                                                        semper quis lectus. Vestibulum mattis ullamcorper velit sed. A
-                                                        arcu
-                                                        cursus vitae congue mauris.
-                                                        <span>A arcu cursus vitae congue mauris. Sagittis id consectetur
-                                                            purus ut. Tellus rutrum tellus pellentesque eu tincidunt
-                                                            tortor
-                                                            aliquam nulla. Diam in arcu cursus euismod quis. Eget sit
-                                                            amet
-                                                            tellus cras adipiscing enim eu. In fermentum et sollicitudin
-                                                            ac
-                                                            orci phasellus. A condimentum vitae sapien pellentesque
-                                                            habitant
-                                                            morbi tristique senectus et. In dictum non consectetur a
-                                                            erat.
-                                                            Nunc scelerisque viverra mauris in aliquam sem fringilla.
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                        @if($feedbacks->count() > 0)
                                 <div class="tab-pane fade" id="pills-contact2" role="tabpanel"
                                     aria-labelledby="pills-contact-tab2">
                                     <div class="wsus__pro_det_review">
@@ -445,19 +383,23 @@
                                             <div class="row">
                                                 <div class="col-xl-8 col-lg-7">
                                                     <div class="wsus__comment_area">
-                                                        <h4>Reviews <span>02</span></h4>
+                                                        <h4>Phản hồi từ khách hàng<span>
+                                                            {{ $totalComments }}
+                                                        </span></h4>
+                                @foreach($feedbacks as $feedback)
                                                         <div class="wsus__main_comment">
                                                             <div class="wsus__comment_img">
-                                                                <img src="images/client_img_3.jpg" alt="user"
+                                                                <img src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png" alt="user"
                                                                     class="img-fluid w-100">
                                                             </div>
+                        
+                        
+                        
                                                             <div class="wsus__comment_text reply">
-                                                                <h6>Shopnil mahadi <span>4 <i
+                                                                <h6>{{ $feedback->name }}<span>{{ $feedback->point }}<i
                                                                             class="fas fa-star"></i></span></h6>
-                                                                <span>09 Jul 2021</span>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                                    elit.
-                                                                    Cupiditate sint molestiae eos? Officia, fuga eaque.
+                                                                <span>{{ $feedback->created_at}}</span>
+                                                                <p>{{ $feedback->desc}}
                                                                 </p>
                                                                 <ul class="">
                                                                     <li><img src="images/headphone_1.jpg" alt="product"
@@ -468,7 +410,7 @@
                                                                             class="img-fluid w-100"></li>
                                                                 </ul>
                                                                 <a href="#" data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapsetwo">reply</a>
+                                                                    data-bs-target="#flush-collapsetwo">Trả lời</a>
                                                                 <div class="accordion accordion-flush"
                                                                     id="accordionFlushExample2">
                                                                     <div class="accordion-item">
@@ -485,54 +427,20 @@
                                                                                             placeholder="Your Text"></textarea>
                                                                                     </div>
                                                                                     <button type="submit"
-                                                                                        class="common_btn">submit</button>
+                                                                                        class="common_btn">Gửi</button>
                                                                                 </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                @endforeach
+                @else
+                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+                @endif
+
                                                         </div>
-                                                        <div class="wsus__main_comment">
-                                                            <div class="wsus__comment_img">
-                                                                <img src="images/client_img_1.jpg" alt="user"
-                                                                    class="img-fluid w-100">
-                                                            </div>
-                                                            <div class="wsus__comment_text reply">
-                                                                <h6>Smith jhon <span>5 <i
-                                                                            class="fas fa-star"></i></span>
-                                                                </h6>
-                                                                <span>09 Jul 2021</span>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                                    elit.
-                                                                    Cupiditate sint molestiae eos? Officia, fuga eaque.
-                                                                </p>
-                                                                <a href="#" data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapsetwo2">reply</a>
-                                                                <div class="accordion accordion-flush"
-                                                                    id="accordionFlushExample2">
-                                                                    <div class="accordion-item">
-                                                                        <div id="flush-collapsetwo2"
-                                                                            class="accordion-collapse collapse"
-                                                                            aria-labelledby="flush-collapsetwo"
-                                                                            data-bs-parent="#accordionFlushExample">
-                                                                            <div class="accordion-body">
-                                                                                <form>
-                                                                                    <div
-                                                                                        class="wsus__riv_edit_single text_area">
-                                                                                        <i class="far fa-edit"></i>
-                                                                                        <textarea cols="3" rows="1"
-                                                                                            placeholder="Your Text"></textarea>
-                                                                                    </div>
-                                                                                    <button type="submit"
-                                                                                        class="common_btn">submit</button>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        
                                                         <div id="pagination">
                                                             <nav aria-label="Page navigation example">
                                                                 <ul class="pagination">
@@ -547,11 +455,11 @@
                                                                     </li>
                                                                     <li class="page-item"><a class="page-link"
                                                                             href="#">2</a></li>
-                                                                    <li class="page-item"><a class="page-link"
+                                                                    {{-- <li class="page-item"><a class="page-link"
                                                                             href="#">3</a></li>
                                                                     <li class="page-item"><a class="page-link"
                                                                             href="#">4</a></li>
-                                                                    <li class="page-item">
+                                                                    <li class="page-item"> --}}
                                                                         <a class="page-link" href="#" aria-label="Next">
                                                                             <i class="fas fa-chevron-right"></i>
                                                                         </a>
@@ -561,48 +469,73 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
+                                                {{-- <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0"> --}}
+
+                                                    <div class="col-xl-4 col-lg-5 mt-4">
                                                     <div class="wsus__post_comment rev_mar" id="sticky_sidebar3">
-                                                        <h4>write a Review</h4>
-                                                        <form action="#">
+                                                        <h4>Viết đánh giá sản phẩm</h4>
+                                                        <form method="post" action="{{ route('submitFeedback', ['product' => $product->id]) }}">
+                                                            @csrf
                                                             <p class="rating">
-                                                                <span>select your rating : </span>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
+                                                                <span>Chọn số sao : </span>
+                                                                <i class="fas fa-star" data-star="1"></i>
+                                                                <i class="fas fa-star" data-star="2"></i>
+                                                                <i class="fas fa-star" data-star="3"></i>
+                                                                <i class="fas fa-star" data-star="4"></i>
+                                                                <i class="fas fa-star" data-star="5"></i>
+                                                                <input type="hidden" name="stars" id="selectedStars" value="0">
                                                             </p>
+
+                                                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    $('.fa-star').on('click', function() {
+                                                                        // Đặt tất cả sao về trạng thái không được chọn
+                                                                        $('.fa-star').removeClass('selected');
+                                                            
+                                                                        // Đặt sao được chọn và các sao trước đó về trạng thái đã chọn
+                                                                        $(this).addClass('selected');
+                                                                        $(this).prevAll('.fa-star').addClass('selected');
+                                                            
+                                                                        // Lấy giá trị của số sao đã chọn và gán vào trường ẩn
+                                                                        var selectedStars = $(this).data('star');
+                                                                        $('#selectedStars').val(selectedStars);
+                                                                    });
+                                                                });
+                                                            </script>
+
+
                                                             <div class="row">
                                                                 <div class="col-xl-12">
                                                                     <div class="wsus__single_com">
-                                                                        <input type="text" placeholder="Name">
+                                                                        <input type="text" name="name" placeholder="Name">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-12">
                                                                     <div class="wsus__single_com">
-                                                                        <input type="email" placeholder="Email">
+                                                                        <input type="tel" name="phone" placeholder="Phone" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-12">
                                                                     <div class="col-xl-12">
                                                                         <div class="wsus__single_com">
                                                                             <textarea cols="3" rows="3"
-                                                                                placeholder="Write your review"></textarea>
+                                                                                name="feedback"
+                                                                                placeholder="Viết đánh giá"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="img_upload">
-                                                                <div class="gallery">
-                                                                    <a class="cam" href="javascript:void(0)"><span><i
-                                                                                class="fas fa-image"></i></span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <button class="common_btn" type="submit">submit
-                                                                review</button>
+                                                            
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+                                                            <button class="common_btn" type="submit">GỬI
+                                                                </button>
                                                         </form>
+
                                                     </div>
                                                 </div>
                                             </div>

@@ -12,38 +12,49 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use App\Models\DonHang;
+use App\Models\CTHD;
 
 
-class OrderDataTable extends DataTable
+
+class DetailOrderDataTable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))
-        ->addColumn('id', function ($model) {
+        return (new EloquentDataTable($query))// $query tạo và thực hiện các truy vấn SQL đối với cơ sở dữ liệu.
+        ->addColumn('id', function ($model) {//$model Là một hàm callback, trong đó $model là mỗi dòng dữ liệu trong kết quả truy vấn. 
+
             // Thêm nội dung tính toán cho cột STT
             return $model->id;
         })
             ->addColumn('enable', function($query){
-                $detailBtn = "<a href='".route('order_detail', $query->id)."' class='btn btn-primary'>Detail</a>";
+                $detailBtn = "<a href='".route('order_detail', $query->id)."' class='btn btn-primary'>Tổng thiền</a>";
 
               return $detailBtn;
 
             })
+//             ->addColumn('total', function ($model) {
+//                 // Thêm nội dung tính toán cho cột STT
+//                 $hoaDon = HoaDon::find($hoaDonId);
+// $products = $hoaDon->products;
+
+// foreach ($products as $product) {
+//     echo $product->name; // Lấy giá trị của cột 'name' trong bảng 'products'
+//     echo $product->pivot->quantity; // Lấy giá trị của cột 'quantity' trong bảng trung gian 'cthd'
+//     echo $product->pivot->price; // Lấy giá trị của cột 'price' trong bảng trung gian 'cthd'
+    
+            // })}
             ->rawColumns(['icon', 'action', 'enable'])
             ->setRowId('id');
     }
+        
 
-    /**
-     * Get the query source of dataTable.
-     */
+    
     public function query(DonHang $model): QueryBuilder
     {
         return $model->newQuery();
     }
 
-    /**
-     * Optional method if you want to use the html builder.
-     */
+    
     public function html(): HtmlBuilder
     {
         return $this->builder()
@@ -63,20 +74,17 @@ class OrderDataTable extends DataTable
                     ]);
     }
 
-    /**
-     * Get the dataTable columns definition.
-     */
+   
     public function getColumns(): array
     {
         return [
            
-            Column::make('id')->title('ID Đơn hàng'), // đúng với tên trường cơ sở dữ liệu, là các trường cần lấy dữ liệu ra
-            Column::make('name')->title('Tên KH'),
-            Column::make('phone')->title('SĐT'),
-            Column::make('date')->title('Ngày hóa đơn'),
-            Column::make('status')->title('Trạng thái đơn hàng'),
-            Column::make('total')->title('Tổng tiền hóa đơn'),
-            Column::make('enable')->title('Hoạt động') // view or xóa
+            Column::make('idProduct')->title('ID Sản phẩm'), // đúng với tên trường cơ sở dữ liệu, là các trường cần lấy dữ liệu ra
+            Column::make('products->link_photo')->title('Ảnh sản phẩm'),
+            Column::make('products->name')->title('Tên sản phẩm'),
+            Column::make('quantity')->title('Số lượng mua'),
+            Column::make('price')->title('Giá sản phẩm'),
+            Column::make('total')->title('Thành tiền')
             
             
             ->exportable(false)
@@ -86,12 +94,10 @@ class OrderDataTable extends DataTable
         ];
     }
 
-    /**
-     * Get the filename for export.
-     */
+    
     protected function filename(): string
     {
-        return 'ListOrder_' . date('YmdHis');
+        return 'Order_' . date('YmdHis');
     }
 }
 

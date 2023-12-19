@@ -9,6 +9,8 @@ use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\DetailProductController;
 use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\FeedbackController;
+
 
 
 /*
@@ -57,3 +59,7 @@ Route::get('/products', [ProductController::class,'show_list'])->name('products_
 
 // Customer xem chi tiết sản phẩm 
 Route::get('/products/{id}', [DetailProductController::class, 'show'])->name('show_detail_product');
+
+// Xử lý Cus viết Feedback
+//Route::get('/{product}/feedback', [FeedbackController::class, 'showForm'])->name('feedBackCus');
+Route::post('/{product}/feedback', [DetailProductController::class, 'storeFeedback'])->name('submitFeedback');

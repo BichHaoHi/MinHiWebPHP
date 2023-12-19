@@ -23,4 +23,15 @@ class DonHang extends Model
     protected $casts = [
         
     ];
+    // quan hệ đơn - khách
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+// quan hệ đơn và sp
+public function product()
+{
+    return $this->belongsToMany(Product::class, 'cthd', 'idDonHang', 'idProduct')
+        ->withPivot('quantity', 'price');
+}
+
 }

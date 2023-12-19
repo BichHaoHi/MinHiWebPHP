@@ -54,4 +54,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function don_hang()
+    {
+        return $this->hasMany(DonHang::class);
+    }
 }

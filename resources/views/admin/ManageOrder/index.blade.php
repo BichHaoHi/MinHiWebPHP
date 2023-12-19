@@ -19,7 +19,7 @@
               <div class="card-header">
                 <h4>List Order, that done receiced - were shipping - were order from customer</h4>
                 <div class="card-header-action">
-                    <a href="#" class="btn btn-primary"></a>
+                    <a href="{{route('manage_product.create')}}" class="btn btn-primary">Create New</a>
                 </div>
               </div>
               <div class="card-body">

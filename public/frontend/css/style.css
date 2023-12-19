@@ -9448,5 +9448,8 @@ a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
   color: #08C;
 }
+.fa-star.selected {
+  color: gold; /* Màu vàng cho sao đã chọn */
+}
 
 /* extra css end here */

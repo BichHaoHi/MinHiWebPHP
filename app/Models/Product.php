@@ -29,4 +29,13 @@ class Product extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+    public function don_hang()
+    {
+        return $this->belongsToMany(DonHang::class, 'cthd', 'idProduct', 'idDonHang')
+            ->withPivot('');
+    }
+
+    public function feedbacks() {
+        return $this->hasMany(Feedback::class);
+    }
 }

@@ -14,6 +14,18 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->string('phone');
+            $table->boolean('enable');
+            $table->string('desc');
+            $table->integer('point');
+            
+
+            $table->unsignedBigInteger('idUser');
+            $table->foreign('idUser')->references('id')->on('users');
+
+            $table->unsignedBigInteger('idProduct');
+            $table->foreign('idProduct')->references('id')->on('products');
         });
     }
 

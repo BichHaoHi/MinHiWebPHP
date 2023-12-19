@@ -45,6 +45,6 @@ Route::resource('admin/manage_customer', ManageCusController::class);// gọi đ
 //Route danh sách các đơn đặt từ KH
 Route::get('/admin/list_odrer', [AdminOrderController::class, 'index'])->name('list_order');
 // Route chi tiết đơn
-//Route::get('/admin/manage_order_detail', [AdminOrderController::class, 'index'])->name('admin_order_detail');
+Route::get('/admin/manage_order_detail', [AdminOrderController::class, 'detail'])->name('order_detail');
 
 ?>

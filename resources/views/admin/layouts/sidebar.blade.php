@@ -31,7 +31,7 @@
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-address-book"></i> <span>Manage Customer</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{route('list_order') }}">List Customer</a></li>
+            <li><a class="nav-link" href="{{route('manage_customer.index') }}">List Customer</a></li>
             
 
           </ul>
@@ -40,7 +40,7 @@
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-truck"></i> <span>Manage Order</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{route('manage_order.index') }}">List Order</a></li>
+            <li><a class="nav-link" href="{{route('list_order') }}">List Order</a></li>
           
           </ul>
         </li>

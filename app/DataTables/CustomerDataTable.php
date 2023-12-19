@@ -24,8 +24,13 @@ class CustomerDataTable extends DataTable
             static $counter = 0;
             return ++$counter;
         })
-            ->addColumn('action', function($query){
-            })
+        ->addColumn('total', function($query) {
+            $totalValue = $query->total;
+            $see = "<a class='btn btn-primary'>
+                        <span class='badge badge-success'>$totalValue</span> Edit
+                    </a>";
+            return $see;
+        })
             ->addColumn('enable', function($query){
                 $button = '<label class="custom-switch">
                 <input type="radio" name="option" value="1" class="custom-switch-input" checked>
@@ -82,7 +87,7 @@ class CustomerDataTable extends DataTable
             Column::make('postcode')->title('Mã bưu chính'),
             Column::make('email')->title('Email'),
             Column::make('birthday')->title('Ngày sinh'),
-            Column::make('total')->title('Tổng đơn'),
+            Column::make('total')->title('Số lượng đơn hàng'),
             Column::make('role')->title('Quyền')
             
             ->exportable(false)
