@@ -345,6 +345,29 @@ header {
   text-transform: capitalize;
   font-weight: 400;
 }
+.thanh_ngang{
+  display: flex;
+    justify-content: space-between;
+}
+.wid{
+  padding: 10px;
+    border: 1px solid #ccc;
+}
+.cha1{
+  display: flex;
+  flex-direction: initial;
+  width: 150px;
+}
+.con1x{
+  /* width: 700px; */
+  background-color: #e0e0e0; /* Màu nền cho minh họa */
+  padding: 10px;
+}
+.con1y{
+  /* width: 500px; */
+    background-color: #f0f0f0; /* Màu nền cho minh họa */
+    padding: 10px;
+}
 
 .wsus__category_search .select2-container--default .select2-selection--single .select2-selection__arrow b {
   margin-top: 5px;

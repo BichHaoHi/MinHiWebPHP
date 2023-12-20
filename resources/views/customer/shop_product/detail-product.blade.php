@@ -307,20 +307,20 @@
                 <div class="col-xl-12">
                     <div class="wsus__pro_det_description">
                         <div class="wsus__details_bg">
-                            <ul class="nav nav-pills mb-3" id="pills-tab3" role="tablist">
-                                <li class="nav-item" role="presentation">
+                            <ul class="nav nav-pills mb-3 thanh_ngang" id="pills-tab3" role="tablist">
+                                <li class="nav-item wid" role="presentation">
                                     <button class="nav-link active" id="pills-home-tab7" data-bs-toggle="pill"
                                         data-bs-target="#pills-home22" type="button" role="tab"
                                         aria-controls="pills-home" aria-selected="true">Đặc trị các vấn đề da</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                <li class="nav-item wid" role="presentation">
                                     <button class="nav-link" id="pills-profile-tab7" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile22" type="button" role="tab"
                                         aria-controls="pills-profile" aria-selected="false">Thông tin sản phẩm</button> 
                                         {{-- chứa mô tả, loại sản phẩm  --}}
                                 </li>
                                 
-                                <li class="nav-item" role="presentation">
+                                <li class="nav-item wid" role="presentation">
                                     <button class="nav-link" id="pills-contact-tab2" data-bs-toggle="pill"
                                         data-bs-target="#pills-contact2" type="button" role="tab"
                                         aria-controls="pills-contact2" aria-selected="false">Đánh giá từ khách hàng</button>
@@ -375,7 +375,7 @@
                                     </div>
                                 </div>
                                 
-                        @if($feedbacks->count() > 0)
+                        
                                 <div class="tab-pane fade" id="pills-contact2" role="tabpanel"
                                     aria-labelledby="pills-contact-tab2">
                                     <div class="wsus__pro_det_review">
@@ -386,6 +386,7 @@
                                                         <h4>Phản hồi từ khách hàng<span>
                                                             {{ $totalComments }}
                                                         </span></h4>
+                                @if($feedbacks->count() > 0)
                                 @foreach($feedbacks as $feedback)
                                                         <div class="wsus__main_comment">
                                                             <div class="wsus__comment_img">
@@ -433,11 +434,11 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                @endforeach
-                @else
-                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
-                @endif
+                                                           </div>
+                                                                                        @endforeach
+                                                                                        @else
+                                                                                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+                                                                                                @endif
 
                                                         </div>
                                                         
@@ -471,7 +472,15 @@
                                                 </div>
                                                 {{-- <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0"> --}}
 
-                                                    <div class="col-xl-4 col-lg-5 mt-4">
+                                                
+                                                            
+                                                        @if(session('success'))
+                                                            <div class="alert alert-success">
+                                                      {{ session('success') }}
+                                                           </div>
+                                                            @endif
+
+<div class="col-xl-4 col-lg-5 mt-4">
                                                     <div class="wsus__post_comment rev_mar" id="sticky_sidebar3">
                                                         <h4>Viết đánh giá sản phẩm</h4>
                                                         <form method="post" action="{{ route('submitFeedback', ['product' => $product->id]) }}">
@@ -486,7 +495,7 @@
                                                                 <input type="hidden" name="stars" id="selectedStars" value="0">
                                                             </p>
 
-                                                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                                            {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                                                             <script>
                                                                 $(document).ready(function() {
                                                                     $('.fa-star').on('click', function() {
@@ -502,7 +511,7 @@
                                                                         $('#selectedStars').val(selectedStars);
                                                                     });
                                                                 });
-                                                            </script>
+                                                            </script> --}}
 
 
                                                             <div class="row">
@@ -526,12 +535,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+
                                                             <button class="common_btn" type="submit">GỬI
                                                                 </button>
                                                         </form>
