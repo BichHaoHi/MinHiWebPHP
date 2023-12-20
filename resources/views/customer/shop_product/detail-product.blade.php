@@ -581,7 +581,7 @@
                                                                 </div>
                                                                 <div class="col-xl-12">
                                                                     <div class="wsus__single_com">
-                                                                        <input type="email" placeholder="Email">
+                                                                        <input type="number" placeholder="Phone">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-12">

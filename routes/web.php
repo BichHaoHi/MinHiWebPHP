@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\DetailProductController;
+use App\Http\Controllers\Frontend\FeedbackController;
 use App\Http\Controllers\Frontend\ProductController;
 
 
@@ -57,3 +58,10 @@ Route::get('/products', [ProductController::class,'show_list'])->name('products_
 
 // Customer xem chi tiết sản phẩm 
 Route::get('/products/{id}', [DetailProductController::class, 'show'])->name('show_detail_product');
+
+//Cus feedback sản phẩm
+Route::post('/submit-feedback', 'FeedbackController@submitFeedback');
+
+//Cus cập nhật profile
+Route::get('/users/{id}/edit', [UserProfileController::class, 'update_profile'])->name('profile.edit');
+Route::put('/users/{id}', [UserProfileController::class, 'updateprofile'])->name('profile.update');
