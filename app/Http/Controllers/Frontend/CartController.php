@@ -75,11 +75,5 @@ class CartController extends Controller
     }
     
     
-    public function cartTotal(){
-        $total = 0;
-        foreach(Cart::content() as $product){
-            $total += $this->getProductTotal($product->rowId);
-        };
-        return $total;
-    }
+   
 }
