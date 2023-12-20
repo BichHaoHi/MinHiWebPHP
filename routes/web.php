@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\FeedbackController;
 use App\Http\Controllers\Frontend\ProductController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,7 +61,9 @@ Route::get('/products', [ProductController::class,'show_list'])->name('products_
 Route::get('/products/{id}', [DetailProductController::class, 'show'])->name('show_detail_product');
 
 //Cus feedback sản phẩm
-Route::post('/submit-feedback', 'FeedbackController@submitFeedback');
+Route::post('/{product}/feedback', [DetailProductController::class, 'store'])->name('submit_Feedback');
+Route::get('/{product}/feedback', [FeedbackController::class, 'show'])->name('feedback');
+
 
 //Cus cập nhật profile
 Route::get('/users/{id}/edit', [UserProfileController::class, 'update_profile'])->name('profile.edit');

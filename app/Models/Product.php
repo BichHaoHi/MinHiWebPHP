@@ -32,4 +32,8 @@ class Product extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public function feedbacks() {
+        return $this->hasMany(Feedback::class);
+    }
 }

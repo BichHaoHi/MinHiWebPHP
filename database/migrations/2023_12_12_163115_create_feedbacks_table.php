@@ -13,23 +13,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string('name');
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->boolean('enable');
             $table->string('desc');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->integer('point');
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('idUser');
+            $table->foreign('idUser')->references('id')->on('users');
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('feedback');
