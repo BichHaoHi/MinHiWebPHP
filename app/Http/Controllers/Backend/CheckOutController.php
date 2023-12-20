@@ -26,7 +26,8 @@ class CheckOutController extends Controller
     }
 
     public function checkOutFormSubmit(Request $request){
-        return response(['status' => 'success', 'redirect_url'=> route('customer.payment')]);
+        dd($request->all());
+        // return response(['status' => 'success', 'redirect_url'=> route('customer.payment')]);
     }
 
 
