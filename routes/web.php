@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\OnlineCheckout;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
@@ -53,6 +54,8 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
     Route::get('customer/checkout', [CheckOutController::class, 'index'])->name('customer.checkout');
     Route::post('customer/checkout/form-submit', [CheckOutController::class, 'checkOutFormSubmit'])->name('customer.checkout.form-submit');
     Route::get('customer/payment', [PaymentController::class, 'index'])->name('customer.payment');
+    Route::post('customer/payment-online', [OnlineCheckout::class, 'Online_checkout'])->name('customer.onlinecheckout.online_checkout');
+
 
     // Route::get('customer/paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('customer.paypal.payment');
     // Route::get('customer/paypal/success', [PaymentController::class, 'paypalSuccess'])->name('customer.paypal.success');

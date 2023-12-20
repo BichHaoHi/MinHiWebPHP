@@ -31,7 +31,8 @@ MinHi || Checkout
     ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
-            <form class="wsus__checkout_form">
+            <form class="wsus__checkout_form" method="POST" action="{{ route('customer.checkout.form-submit') }}">
+               @csrf 
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="wsus__check_form">
@@ -108,7 +109,7 @@ MinHi || Checkout
                                 <p><b>total:</b> <span class="total">{{ $total }}</span> vnđ</p>
                             </div>
                             
-                            <a href="#" id="submitCheckoutForm" class="common_btn">Đặt hàng</a>
+                            <button type="submit" name="payUrl" href="#" id="submitCheckoutForm" class="common_btn">Đặt hàng</button>
                         </div>
                     </div>
                 </div>
@@ -185,8 +186,12 @@ var printResult = () => {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 }); 
+
+    // xử lý lại ajax để có thể gửi form
+
         $('#submitCheckoutForm').on('click', function(e){
-        e.preventDefault();
+            var status = false;
+        e.preventDefault(); //xem lại dòng này nha
         if($('#ten').val() == ""){
             toastr.error('Vui lòng điền tên người nhận hàng');
         }
@@ -211,6 +216,7 @@ var printResult = () => {
             success:function(data){
                 if(data.status === 'success')
                 {
+                    
                     window.location.href = data.redirect_url;
                 }        
                 },
@@ -220,8 +226,11 @@ var printResult = () => {
 
         })
 
+        status = true;
         }
-        
+        if (status){
+            this.submit();
+        }
 
     })
 
