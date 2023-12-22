@@ -3,16 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\CheckOutController;
+use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Backend\CustomerController;
-use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\OnlineCheckout;
+=======
+use App\Http\Controllers\Frontend\PaymentController;
+
+>>>>>>> c72e4ce29f49bd766f5e13162ca07d0f26bdc119
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
@@ -51,6 +55,7 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
     Route::put('customer/profile', [UserProfileController::class, 'updateProfile' ])->name('customer.profile.update');
     Route::post('customer/profile', [UserProfileController::class, 'updatePassword' ])->name('customer.profile.update.password');
 
+<<<<<<< HEAD
     Route::get('customer/checkout', [CheckOutController::class, 'index'])->name('customer.checkout');
     Route::post('customer/checkout/form-submit', [CheckOutController::class, 'checkOutFormSubmit'])->name('customer.checkout.form-submit');
     Route::get('customer/payment', [PaymentController::class, 'index'])->name('customer.payment');
@@ -60,13 +65,22 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
     // Route::get('customer/paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('customer.paypal.payment');
     // Route::get('customer/paypal/success', [PaymentController::class, 'paypalSuccess'])->name('customer.paypal.success');
     // Route::get('customer/paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('customer.paypal.cancel');
+=======
+    
+>>>>>>> c72e4ce29f49bd766f5e13162ca07d0f26bdc119
 
+   
     // Route cho đơn hàng
     Route::get('customer/orders', [UserOrderController::class, 'index'])->name('customer.orders.index');
     Route::get('customer/orders/show/{id}', [UserOrderController::class, 'show'])->name('customer.orders.show');
 
 
+// bấm vào thanh toán: 
+    Route::get('customer/checkout', [CheckOutController::class, 'index'])->name('customer.checkout');
 
+    Route::post('customer/checkout/form-submit', [CheckOutController::class, 'checkOutFormSubmit'])->name('customer.checkout.form-submit');
+    
+    Route::get('customer/cod/success', [PaymentController::class, 'codSuccess'])->name('customer.cod.success');
 
 });
 
@@ -87,3 +101,8 @@ Route::get('product-detail/{name}', [FrontendProductController::class, 'showProd
     // Route::get('cart/total', [CartController::class, 'cartTotal'])->name('cart.total');
     
 
+    // Route::get('customer/payment', [PaymentController::class, 'index'])->name('customer.payment');
+
+
+    // Route::get('customer/paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('customer.paypal.payment');
+    // Route::get('customer/paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('customer.paypal.cancel');

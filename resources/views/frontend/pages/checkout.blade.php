@@ -90,26 +90,26 @@ MinHi || Checkout
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="wsus__order_details" id="sticky_sidebar">
-                            {{-- <p class="wsus__product">Phương thức thanh toán</p> --}}
-                            {{-- <div class="form-check">
+                            <p class="wsus__product">Phương thức thanh toán</p>
+                            <div class="form-check">
                                 <input class="form-check-input" type="radio" name="exampleRadios" id="COD"
-                                    value="option1" checked>
+                                    value="COD" checked>
                                 <label class="form-check-label" for="exampleRadios1">
                                     Thanh toán khi nhận hàng
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="exampleRadios" id="wallet"
-                                    value="option2">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    Ví điện tử PayPal
+                                    value="MOMO">
+                                <label class="form-check-label" for="exampleRadios2" name = "payUrl" >
+                                    Ví điện tử 
                                 </label>
-                            </div> --}}
+                            </div>
                             <div class="wsus__order_details_summery">
                                 <p><b>total:</b> <span class="total">{{ $total }}</span> vnđ</p>
                             </div>
                             
-                            <button type="submit" name="payUrl" href="#" id="submitCheckoutForm" class="common_btn">Đặt hàng</button>
+                            <button name="payUrl"  id="submitCheckoutForm" class="common_btn">Đặt hàng</button>
                         </div>
                     </div>
                 </div>
@@ -190,6 +190,7 @@ var printResult = () => {
     // xử lý lại ajax để có thể gửi form
 
         $('#submitCheckoutForm').on('click', function(e){
+<<<<<<< HEAD
             var status = false;
         e.preventDefault(); //xem lại dòng này nha
         if($('#ten').val() == ""){
@@ -230,6 +231,64 @@ var printResult = () => {
         }
         if (status){
             this.submit();
+=======
+        if($("input[name='exampleRadios']:checked").val() === 'COD'){
+            e.preventDefault();
+            if($('#ten').val() == ""){
+                toastr.error('Vui lòng điền tên người nhận hàng');
+            }
+            else if( $('#diachi').val()==""){
+                toastr.error('Vui lòng điền địa chỉ nhận hàng');
+            }
+            else if( $('#sodienthoai').val()==""){
+                toastr.error('Vui lòng điền số điện thoại');
+            }
+            else if($('#sodienthoai').val().length !=10){
+                toastr.error('Số điện thoại không hợp lệ');
+            }
+            else{
+                $.ajax({
+                url: "{{ route('customer.checkout.form-submit') }}",
+                method: 'POST',
+                data: {
+                     ten: $('#ten').val(),
+                     sdt: $('#sodienthoai').val(),
+                     total: $('.total').text(),
+                     address: $('#diachi').val() + ", " + result,
+                     paymentMethod: $("input[name='exampleRadios']:checked").val()
+                      },
+                success:function(data){
+                    if(data.status === 'success')
+                    {
+                        window.location.href = data.redirect_url;
+                    }        
+                    },
+                error: function(data){
+                    }
+            })
+            }
+        }else{
+            console.log('momo nè');
+            $.ajax({
+                url: "{{ route('customer.checkout.form-submit') }}",
+                method: 'POST',
+                data: {
+                     ten: $('#ten').val(),
+                     sdt: $('#sodienthoai').val(),
+                     total: $('.total').text(),
+                     address: $('#diachi').val() + ", " + result,
+                     paymentMethod: $("input[name='exampleRadios']:checked").val()
+                      },
+                success:function(data){
+                    if(data.status === 'success')
+                    {
+                        // window.location.href = data.redirect_url;
+                    }        
+                    },
+                error: function(data){
+                    }
+            })
+>>>>>>> c72e4ce29f49bd766f5e13162ca07d0f26bdc119
         }
 
     })
