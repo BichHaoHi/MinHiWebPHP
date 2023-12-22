@@ -147,7 +147,7 @@ MinHi || Cart Details
                     if(data.status==='success'){
                         let productId = '#'+rowId;
                         $(productId).text(data.product_total);
-
+                        
                         let subtotalElement = $('.cart_subtotal');
                         let currentSubtotal = parseFloat(subtotalElement.text());
                         let updatedSubtotal = currentSubtotal + data.product_price;
@@ -168,9 +168,13 @@ MinHi || Cart Details
         $('.product-decrement').on('click', function(){
             let input = $(this).siblings('.product-qty');
             let quantity = parseInt(input.val())-1;
+            let enable = true;
             let rowId = input.data('rowid');
             if(quantity < 1){
                 quantity = 1;
+                enable = false;
+            } else {
+                enable = true;
             }
             input.val(quantity);
 
@@ -185,14 +189,16 @@ MinHi || Cart Details
                     if(data.status==='success'){
                         let productId = '#'+rowId;
                         $(productId).text(data.product_total);
+                        if(enable){
+                            let subtotalElement = $('.cart_subtotal');
+                            let currentSubtotal = parseFloat(subtotalElement.text());
+                            let updatedSubtotal = currentSubtotal - data.product_price;
+                            subtotalElement.text(updatedSubtotal);
+                            toastr.success(data.message);
+                        }
+                       
 
-                        let subtotalElement = $('.cart_subtotal');
-                        let currentSubtotal = parseFloat(subtotalElement.text());
-                        let updatedSubtotal = currentSubtotal - data.product_price;
-                        subtotalElement.text(updatedSubtotal);
 
-
-                        toastr.success(data.message);
                     }else if(data.status === 'error'){
                         toastr.error(data.message);
                     }

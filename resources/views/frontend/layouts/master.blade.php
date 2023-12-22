@@ -160,6 +160,8 @@
 
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+
+   
     
     <script>
         @if($errors->any())
