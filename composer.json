@@ -6,15 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "anayarojo/shoppingcart": "^4.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "srmklive/paypal": "~3.0",
         "yajra/laravel-datatables": "^10.1",
         "yajra/laravel-datatables-oracle": "^10.11",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.9",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.26",
         "laravel/pint": "^1.0",

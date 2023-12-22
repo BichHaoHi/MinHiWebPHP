@@ -38,4 +38,5 @@ class Product extends Model
     public function feedbacks() {
         return $this->hasMany(Feedback::class);
     }
+    
 }

@@ -16,6 +16,13 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
+                      <label for="">Enable</label>
+                      <select name="enable" id="" class="form-control">
+                        <option value="M">0</option>
+                        <option value="F">1</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Description</label>
                         <textarea type="text" class="form-control" name="description" >{{ $product->description }}</textarea>
                     </div>

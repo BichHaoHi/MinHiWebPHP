@@ -1,4 +1,7 @@
 @extends('frontend.layouts.master')
+@section('title')
+MinHi_Cosmetic || Login
+@endsection
 @section('content')
 
 

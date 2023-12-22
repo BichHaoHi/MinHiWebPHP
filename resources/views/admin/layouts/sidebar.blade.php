@@ -12,12 +12,12 @@
           <a href="{{ route('admin.dashboard') }}" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
         </li>
         <li class="menu-header">Starter</li>
-        <li class="dropdown">
+        {{-- <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Slider</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{route('slider.index') }}">Slider</a></li>
           </ul>
-        </li>
+        </li> --}}
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-store"></i> <span>Manage Products</span></a>
           <ul class="dropdown-menu">
@@ -42,6 +42,12 @@
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{route('list_order') }}">List Order</a></li>
           
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Order</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{route('manage_order.index') }}">Order</a></li>
           </ul>
         </li>
         {{-- <li class="dropdown">

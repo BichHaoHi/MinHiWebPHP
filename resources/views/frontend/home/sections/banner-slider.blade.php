@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="col-xl-12">
-                            <div class="wsus__single_slider" style="background: url('https://unlicosmetics.com/wp-content/uploads/2023/10/Banner-web-day-02.png');">
+                            <div class="wsus__single_slider" style="background: url('https://static.vecteezy.com/system/resources/thumbnails/015/184/087/small/group-of-white-and-blank-unbranded-cosmetic-cream-jars-and-tubes-on-blue-background-skin-care-product-presentation-elegant-mockup-skincare-beauty-and-spa-banner-with-copy-space-3d-rendering-photo.jpg')">
                                 <div class="wsus__single_slider_text">
                                     {{-- <h3>new arrivals</h3>
                                     <h1>winter collection</h1>

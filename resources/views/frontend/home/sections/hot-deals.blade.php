@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="wsus__section_header">
-                    <h3>hot deals of the day</h3>
+                    <h3>Sản phẩm hot</h3>
                 </div>
             </div>
         </div>

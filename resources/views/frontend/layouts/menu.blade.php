@@ -1,3 +1,11 @@
+@php
+    $productsNTT = \App\Models\Product::where('enable', 1)->where('type', 'Nước tẩy trang') ->get();
+    $productsSRM = \App\Models\Product::where('enable', 1)->where('type', 'Sữa rửa mặt') ->get();
+    $productsKCN = \App\Models\Product::where('enable', 1)->where('type', 'Kem chống nắng') ->get();
+    $productsKDA = \App\Models\Product::where('enable', 1)->where('type', 'Kem dưỡng ẩm') ->get();
+    $productsSR = \App\Models\Product::where('enable', 1)->where('type', 'Serum') ->get();
+@endphp
+
 <nav class="wsus__main_menu d-none d-lg-block">
     <div class="container">
         <div class="row">
@@ -220,8 +228,19 @@
 
                             <div class="wsus__mega_menu">
                                 <div class="row">
-                                    <div class="col-xl-3 col-lg-3">
+                                    <div class="col-xl-3 col-lg-3" style="width:20%">
                                         <div class="wsus__mega_menu_colum">
+                                            <h4>Nước tẩy trang</h4>
+                                            <ul class="wsis__mega_menu_item">
+                                                @foreach ($productsNTT as $product)
+                                                <li><a href="#">{{ $product->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3" style="width:20%">
+                                        <div class="wsus__mega_menu_colum">
+                                            <h4>Sữa rửa mặt</h4>
                                             <h4>Sữa rửa mặt</h4>
                                             <ul class="wsis__mega_menu_item">
                                                 <li><a href="#">Cetaphil</a></li>
@@ -231,8 +250,9 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-lg-3">
+                                    <div class="col-xl-3 col-lg-3" style="width:20%">
                                         <div class="wsus__mega_menu_colum">
+                                            <h4>Kem chống nắng</h4>
                                             <h4>Kem chống nắng</h4>
                                             <ul class="wsis__mega_menu_item">
                                                 <li><a href="#">Anessa</a></li>
@@ -242,8 +262,9 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-lg-3">
+                                    <div class="col-xl-3 col-lg-3" style="width:20%">
                                         <div class="wsus__mega_menu_colum">
+                                            <h4>Serum</h4>
                                             <h4>Serum</h4>
                                             <ul class="wsis__mega_menu_item">
                                                 <li><a href="#"> Serum Garnier</a></li>
@@ -254,7 +275,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-lg-3">
+                                    <div class="col-xl-3 col-lg-3" style="width:20%">
                                         <div class="wsus__mega_menu_colum">
                                             <h4>Kem dưỡng ẩm </h4>
                                             <ul class="wsis__mega_menu_item">
@@ -304,7 +325,7 @@
                             </ul>
                         </li>
                         <li><a href="track_order.html">track order</a></li>
-                        <li><a href="daily_deals.html">daily deals</a></li>
+                        <li><a href="daily_deals.html">daily deals</a></li> --}}
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="contact.html">contact</a></li>

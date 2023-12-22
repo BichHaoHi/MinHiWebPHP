@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class FeedBack extends Model
 {
     use HasFactory;
-    protected $table = 'feedback';
+    protected $table = 'feedbacks';
+    // protected $fillable = ['name', 'phone', 'enable', 'desc', 'point', 'idUser', 'idProduct'];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'idUser');
     }
 
     public function product() {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'idProduct');
     }
 }

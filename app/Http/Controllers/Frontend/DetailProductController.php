@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Feedback;
-
+use Validator;
 use Illuminate\Http\Request;
 
 class DetailProductController extends Controller
@@ -29,10 +29,15 @@ class DetailProductController extends Controller
         $product = Product::find($id);
         $feedbacks = Feedback::where('idProduct', $id)->get();
         $totalComments = $feedbacks->count();
+        $type = $product->type;
+        $productsTypes = Product::where('type', $type)->get();
+        
         return view('customer.shop_product.detail-product',[
             'product' => $product,
             'feedbacks' => $feedbacks, // Thêm biến feedbacks vào mảng
-            'totalComments' => $totalComments
+            'totalComments' => $totalComments,
+            'productsTypes'=> $productsTypes,
+            
 
         ]); //compact('product'):  compact để tạo key = ' product' tương ứng với value $product
     }
@@ -53,22 +58,28 @@ class DetailProductController extends Controller
     }
     public function storeFeedback(Request $request, $productId)
     {
+        
+        $feedback = new Feedback();
         $request->validate([
             'name' => 'required|string',
             'phone' => ['required', 'string', 'regex:/^[0-9]{10}$/'],
-            'review' => 'required|string',
-            'stars' => 'required|integer|min:1|max:5',
+            'feedback' => 'required|string',
+            'stars' => 'nullable|integer|min:1|max:5', // Sử dụng 'nullable' để cho phép giá trị là null
         ]);
+        //Feedback::create($request->all());
 
-        $feedback = new Feedback;
+       
         $feedback->idProduct = $productId;
-        $feedback->idUser = 1;
-        $feedback->name = $request->input('name');
-        $feedback->phone = $request->input('phone');
-        $feedback->desc = $request->input('feedback');
-        $feedback->point = $request->input('stars');
+        $feedback->idUser = null;
+        $feedback->name = $request->name;
+        $feedback->phone = $request->phone;
+        $feedback->desc = $request->feedback;
+        $feedback->point = $request->stars;
+        $feedback->enable = true;
+        //dd($feedback!=null);
         $feedback->save();
 
+        
         return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công.');
     }
 }

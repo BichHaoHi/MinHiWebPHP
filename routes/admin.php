@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\PaypalSettingController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
@@ -31,11 +33,24 @@ Route::post('logout', function(Request $request): RedirectResponse{
 Route::get('admin/profile', [ProfileController::class, 'index'])->name('admin.profile');
 Route::post('admin/profile/update', [ProfileController::class, 'updateProfile'])->name('admin.profile.update'); 
 
-// Slider Route
-Route::resource('admin/slider', SliderController::class);
+// Slider Route- ko cần nữa
+// Route::resource('admin/slider', SliderController::class);
+
 
 // MANAGE PRODUCTS
-Route::resource('admin/manage_product', ProductController::class);  
+Route::resource('admin/manage_product', ProductController::class);
+
+Route::resource('paypal-setting', PaypalSettingController::class);
+
+// Manage Order
+Route::resource('admin/manage_order', OrderController::class);
+Route::get('admin/order-status', [OrderController::class, 'changeOrderStatus'])->name('admin.order.status');
+
+
+
+
+
+
 
 // MANAGER LIST CUSTOMER - SEE DETAIL A CUS - TÌM KIẾM KHÁCH HÀNG
 //Route::get('/admin/manage_cutomer', [ManageCusController::class,'index'])->name('manageCus_show');// Đổ dữ liệu từ data lên bằng Ajax

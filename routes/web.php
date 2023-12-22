@@ -3,15 +3,19 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CheckOutController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\PaymentController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Frontend\DetailProductController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\FeedbackController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -49,17 +53,48 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
     Route::put('customer/profile', [UserProfileController::class, 'updateProfile' ])->name('customer.profile.update');
     Route::post('customer/profile', [UserProfileController::class, 'updatePassword' ])->name('customer.profile.update.password');
 
-});
+    Route::get('customer/checkout', [CheckOutController::class, 'index'])->name('customer.checkout');
+    Route::post('customer/checkout/form-submit', [CheckOutController::class, 'checkOutFormSubmit'])->name('customer.checkout.form-submit');
+    Route::get('customer/payment', [PaymentController::class, 'index'])->name('customer.payment');
 
-// admin đăng nhập tại route
-Route::get('admin/login', [AdminController::class , 'login'])->name('admin.login');
+    // Route::get('customer/paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('customer.paypal.payment');
+    // Route::get('customer/paypal/success', [PaymentController::class, 'paypalSuccess'])->name('customer.paypal.success');
+    // Route::get('customer/paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('customer.paypal.cancel');
 
-// Cus xem ds các sản phẩm 
+    // Route cho đơn hàng
+    Route::get('customer/orders', [UserOrderController::class, 'index'])->name('customer.orders.index');
+    Route::get('customer/orders/show/{id}', [UserOrderController::class, 'show'])->name('customer.orders.show');
+
+    // Cus xem ds các sản phẩm 
 Route::get('/products', [ProductController::class,'show_list'])->name('products_gridview');
 
 // Customer xem chi tiết sản phẩm 
 Route::get('/products/{id}', [DetailProductController::class, 'show'])->name('show_detail_product');
 
 // Xử lý Cus viết Feedback
-//Route::get('/{product}/feedback', [FeedbackController::class, 'showForm'])->name('feedBackCus');
-Route::post('/{product}/feedback', [DetailProductController::class, 'storeFeedback'])->name('submitFeedback');
+//Route::get('/{product}/feedback', [DetailProductController::class, 'show'])->name('feedBackCus');
+//Route::post('/{product}/feedback', [DetailProductController::class, 'storeFeedback'])->name('submitFeedback');
+
+
+
+
+});
+
+// admin đăng nhập tại route
+Route::get('admin/login', [AdminController::class , 'login'])->name('admin.login');
+
+
+// Xử lý Cus viết Feedback
+Route::get('/{product}/feedback', [DetailProductController::class, 'show'])->name('feedBackCus');
+Route::post('/{product}/feedback/save', [DetailProductController::class, 'storeFeedback'])->name('submitFeedback');
+
+
+// Route thêm sp vào giỏ hàng
+Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
+Route::post('cart/update-quantity', [CartController::class, 'updateProductQty'])->name('cart.update-quantity');
+Route::get('clear-cart', [CartController::class, 'clearCart'])->name('clear.cart');
+Route::get('cart/remove-product/{rowId}', [CartController::class, 'removeProduct'])->name('cart.remove-product');
+Route::get('cart-count', [CartController::class, 'getCartCount'])->name('cart-count');
+
+// Route::get('cart/total', [CartController::class, 'cartTotal'])->name('cart.total');
